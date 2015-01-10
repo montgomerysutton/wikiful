@@ -50,3 +50,6 @@ group :development, :test do
   gem 'spring'
 end
 
+#Add a gem for Faker to populate the database with Fake data for design and testing
+gem 'faker'
+
