@@ -1,3 +1,16 @@
 <% # Articles Index View: articles/index.html.erb %>
 
 <h1>This is the Index View for Articles</h1>
+
+<% @articles.each do |article| %>
+	<div>
+		<h3><%= article.title %></h3>
+		<p>Published on <%= article.created_at.strftime('%b %d, %Y') %></p>
+		<p>Filed under
+			<% article.categories.each do |category| %>
+              <%= category.name %>&nbsp;
+            <% end %>
+		</p>
+		<p><%= truncate(article.content, length:200) %></p>
+	</div>
+<% end %>
