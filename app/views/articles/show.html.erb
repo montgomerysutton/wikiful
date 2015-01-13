@@ -1,3 +1,18 @@
 <% # Articles Show View: articles/show.html.erb %>
 
-<h1>This is the Show View for Articles</h1>
+<h3>
+	Categories:
+	<% @article.categories.each do |category| %>
+		<%= category.name %>
+		<% if category.id != @article.categories.last.id %>
+			&nbsp;/&nbsp;
+		<% end %>
+	<% end %>
+</h3>
+
+<h1><%= @article.title %></h1>
+
+<h5>Published: <%= @article.created_at.strftime('%b %d, %Y') %></h5>
+<h5>Last update: <%= @article.updated_at.strftime('%b %d, %Y') %></h5>
+
+<p><%= @article.content %></p>
