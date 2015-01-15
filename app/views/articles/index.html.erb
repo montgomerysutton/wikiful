@@ -9,6 +9,9 @@
 		<p>Filed under
 			<% article.categories.each do |category| %>
               <%= category.name %>&nbsp;
+              <% if category.id != article.categories.last.id %>
+					<%= " / " %>
+			  <% end %>
             <% end %>
 		</p>
 		<p><%= truncate(article.content, length:200) %></p>
