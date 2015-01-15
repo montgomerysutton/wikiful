@@ -2,12 +2,7 @@
 
 <h3>
 	Categories:
-	<% @article.categories.each do |category| %>
-		<%= category.name %>
-		<% if category.id != @article.categories.last.id %>
-			&nbsp;/&nbsp;
-		<% end %>
-	<% end %>
+	<%= @categories %>
 </h3>
 
 <h1><%= @article.title %></h1>
