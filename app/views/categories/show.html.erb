@@ -1,0 +1,19 @@
+<% # Category Show View: categories/show.html.erb %>
+
+<h1><%= @category.name %></h1>
+
+<% @category.articles.each do |article| %>
+	<div>
+		<h3><%= link_to article.title, article %></h3>
+		<p>Published on <%= article.created_at.strftime('%b %d, %Y') %></p>
+		<p>Filed under
+			<% article.categories.each do |category| %>
+              <%= category.name %>&nbsp;
+              <% if category.id != article.categories.last.id %>
+					<%= " / " %>
+			  <% end %>
+            <% end %>
+		</p>
+		<p><%= truncate(article.content, length:200) %></p>
+	</div>
+<% end %>

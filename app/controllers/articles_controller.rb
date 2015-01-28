@@ -5,15 +5,6 @@ class ArticlesController < ApplicationController
 
 	def show
 		@article = Article.find(params[:id])
-		@categories = ""
-
-		@article.categories.each do |category|
-			@categories += category.name
-			if category.id != @article.categories.last.id # if this isn't the last category associated with the article
-				@categories += " / " # add a divider
-			end
-		end
-
 	end
 
 	def new
@@ -36,6 +27,15 @@ class ArticlesController < ApplicationController
 	def destory
 
 	end
+
+    def show_categories
+    	self.categories.each do |category|
+            print category.name
+    		if category.id != self.categories.last.id
+    			print " / "
+    		end
+    	end
+    end
 
 	private
 		def article_params
