@@ -2,7 +2,12 @@
 
 <h3>
 	Categories:
-	<%= @article.show_categories %>
+	<% @article.categories.each do |category| %>
+		<%= link_to category.name, category %>
+		<% if category.id != @article.categories.last.id %>
+			&nbsp;/&nbsp;
+		<% end %>
+	<% end %>
 </h3>
 
 <h1><%= @article.title %></h1>
