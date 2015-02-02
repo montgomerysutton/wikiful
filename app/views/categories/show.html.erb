@@ -5,15 +5,7 @@
 <% @category.articles.order(title: :asc).each do |article| %>
 	<div>
 		<h3><%= link_to article.title, article %></h3>
-		<p>Published on <%= article.created_at.strftime('%b %d, %Y') %></p>
-		<p>Filed under
-			<% article.categories.each do |category| %>
-              <%= category.name %>&nbsp;
-              <% if category.id != article.categories.last.id %>
-					<%= " / " %>
-			  <% end %>
-            <% end %>
-		</p>
+		<p class="text-info">Published on <%= article.created_at.strftime('%b %d, %Y') %></p>
 		<p><%= truncate(article.content, length:200) %></p>
 	</div>
 <% end %>
