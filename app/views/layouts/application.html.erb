@@ -25,17 +25,27 @@
 			<div class="col-sm-3 sidebar">
 				<div class="my-wiki-site">
 					<h4>My Wikiful</h4>
-					<ul>
-				    	<li><%= link_to "Write a Wiki", new_article_path %></li>
+					<ul class="list-group">
+				    	<li class="list-group-item"><%= link_to "Write a Wiki", new_article_path %></li>
 					</ul>
 				</div>
 				<div class="categories-sidebar">
 					<h4>Categories</h4>
-					<ul>
+					<div class="list-group">
 				    	<% @categories.each do |category| %>
-				    		<li><%= link_to category.name, category %></li>
+							<% # create a category_nav_class with the generic class. %>
+							<% category_nav_class = "list-group-item" %>
+				    		<% if @category.present? # if this is a category page %>
+				    			<% if @category.name == category.name # if the name of this category page is the name of this category in the @categories list %>
+				    				<% category_nav_class += " active" # add an 'active' class to category_nav_class %>
+				    			<% end %>
+				    		<% end %>
+				    		<% # And finally actually make the link, giving a "badge" with the number of articles in each category %>
+				    		<%= link_to category, :class => category_nav_class do %>
+				    			<%= category.name %> <span class="badge"><%= category.articles.count.to_s %></span>
+				    		<% end %>
 				    	<% end %>
-					</ul>
+					</div>
 				</div>
 				<div class="about">
 					<h4>About Wikiful</h4>
