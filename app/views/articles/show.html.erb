@@ -1,18 +1,18 @@
 <% # Articles Show View: articles/show.html.erb %>
 
-<h3>
-	Categories:
+<div class="text-info">
 	<% @article.categories.each do |category| %>
 		<%= link_to category.name, category %>
 		<% if category.id != @article.categories.last.id %>
 			&nbsp;/&nbsp;
 		<% end %>
 	<% end %>
-</h3>
+</div>
 
 <h1><%= @article.title %></h1>
 
-<h5>Published: <%= @article.created_at.strftime('%b %d, %Y') %></h5>
-<h5>Last update: <%= @article.updated_at.strftime('%b %d, %Y') %></h5>
+<p class="text-info">Published: <%= @article.created_at.strftime('%b %d, %Y') %> |
+	Last update: <%= @article.updated_at.strftime('%b %d, %Y') %>
+</p>
 
 <p><%= @article.content %></p>
