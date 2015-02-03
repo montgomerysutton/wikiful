@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.error-message {
+	padding: 15px 45px;
+	margin: 15px 0;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}

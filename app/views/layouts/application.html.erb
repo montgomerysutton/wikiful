@@ -21,6 +21,13 @@
 
 	<div class="container">
 		<div class="row">
+			<div class="col-sm-4 flash-message">
+				<% flash.each do | name, msg | %>
+					<%= content_tag :div, msg, id: "flash_#{name}" %>
+				<% end %>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-sm-9 main-content"><%= yield %></div>
 			<div class="col-sm-3 sidebar">
 				<div class="my-wiki-site">
@@ -33,8 +40,7 @@
 					<h4>Categories</h4>
 					<div class="list-group">
 				    	<% @categories.each do |category| %>
-							<% # create a category_nav_class with the generic class. %>
-							<% category_nav_class = "list-group-item" %>
+							<% category_nav_class = "list-group-item" # create a category_nav_class with the generic class %>
 				    		<% if @category.present? # if this is a category page %>
 				    			<% if @category.name == category.name # if the name of this category page is the name of this category in the @categories list %>
 				    				<% category_nav_class += " active" # add an 'active' class to category_nav_class %>
