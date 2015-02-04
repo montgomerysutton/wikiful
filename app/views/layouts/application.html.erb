@@ -14,7 +14,17 @@
 	 <div class="navbar-inner">
 	   <div class="container">
 	     <%= link_to "Wikiful", root_path, :class => "navbar-brand" %>
-	     <div style="float: right;" class="navbar-text">Eventually log in/out and sign up links will go here</div>
+	     <div class='session-controls navbar-text pull-right'>
+	     	<% if current_user %>
+	     		Logged in as <%= current_user.name %>
+	     		<%= link_to "Log Out", logout_path, :class => "btn btn-primary btn-sm" %>
+	     	<% else %>
+				<div class="btn-group">
+					<%= link_to "Sign Up", signup_path, :class => "btn btn-default" %>
+					<%= link_to "Log In", login_path, :class => "btn btn-default" %>
+				</div>
+	        <% end %>
+	      </div>
 	   </div>
 	 </div>
 	</div>
@@ -23,7 +33,7 @@
 		<div class="row">
 			<div class="col-sm-4 flash-message">
 				<% flash.each do | name, msg | %>
-					<%= content_tag :div, msg, id: "flash_#{name}" %>
+					<%= content_tag :div, msg, id: "flash_#{name}", :class => "alert alert-info" %>
 				<% end %>
 			</div>
 		</div>
